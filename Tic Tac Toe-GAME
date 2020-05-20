@@ -1,0 +1,166 @@
+print("WELCOME TO TIC TAC TOE GAME")
+print("Only 2 players are eligible")
+n=input("Enter X person name")
+t=input("Enter O person name")
+print("MOVE FORMAT")
+print("@@@@@@@@@@@@@@@@@@@")
+print('1' + '|' + '2'+ '|' + '3')
+print('-+-+-')
+print('4'+ '|' +'5'+ '|' +'6')
+print('-+-+-')
+print('7'+ '|' +'8'+ '|' +'9')
+print("@@@@@@@@@@@@@@@@@@@")
+print("\n")
+print("LET START THE GAME")
+display = {'1': ' ' , '2': ' ' , '3': ' ' ,
+            '4': ' ' , '5': ' ' , '6': ' ' ,
+            '7': ' ' , '8': ' ' , '9': ' ' }
+keys = []
+for i in display:
+    keys.append(i)
+def printBoard(board):
+    print(board['1'] + '|' + board['2'] + '|' + board['3'])
+    print('-+-+-')
+    print(board['4'] + '|' + board['5'] + '|' + board['6'])
+    print('-+-+-')
+    print(board['7'] + '|' + board['8'] + '|' + board['9'])
+def game():
+    turn='X'
+    count = 0
+for i in range(10):
+        printBoard(display)
+        if turn=='X':
+         print("MOVE" + "----->" + n)
+        else :
+         print("MOVE" + "----->" + t)
+        move = input()        
+
+        if display[move] == ' ':
+            display[move] = turn
+            count=count+1
+        else:
+            print("OUT OF MOVE","Your move is already filled")
+            continue
+
+     if count >= 5:
+            if display['1'] == display['2'] == display['3'] != ' ': 
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")    
+                break
+            elif display['4'] == display['5'] == display['6'] != ' ': 
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+           
+
+          elif display['7'] == display['8'] == display['9'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+            elif display['1'] == display['4'] == display['7'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n ,"WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+           
+         elif display['2'] == display['5'] == display['8'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")
+                break
+            elif display['3'] == display['6'] == display['9'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")     
+                break
+         
+          elif display['7'] == display['8'] == display['9'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+            elif display['7'] == display['5'] == display['3'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+           
+           elif display['1'] == display['5'] == display['9'] != ' ':
+                printBoard(display)
+                print("**********************************")
+                print("GAME OVER")
+                print("**********************************")
+                if(turn=='X'):
+                    print(n , "WON THE GAME")
+                else:
+                    print(t ,"WON THE GAME")
+                print("**********************************")      
+                break
+        if count == 9:
+         print("GAME OVER")                
+         print("*****!TIE!*****")
+         break
+        if turn =='X':
+            turn ='0'
+        else:
+           turn = 'X'
+   i = input("PLAY AGAIN(yes/no)")
+    if  i== "yes" :  
+        for key in keys:
+            display[key] = " "
+        game()  
+   else:
+       exit()  
+if __name__ == "__main__":
+    game()
