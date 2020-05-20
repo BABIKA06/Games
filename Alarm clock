@@ -1,0 +1,47 @@
+import datetime
+import os
+import time
+import random
+import webbrowser
+print ("Now the current time is" , time.strftime("%H:%M:%S"))
+print("FORMAT TO SET ALARM","\n1.HH[9 or 09]","\n2.HH:MM[05:15]","\n3.HH:MM:SS[01:20:30]")
+a=input("Set a time for the alarm:")
+b=input("Select AM/PM:")
+def check_alarm_time(alarm_time):
+	if len(alarm_time) == 1: # HH
+		if alarm_time[0] < 24 and alarm_time[0] >= 0:
+			return True
+	if len(alarm_time) == 2: #HH:MM
+		if alarm_time[0] < 24 and alarm_time[0] >= 0 \
+		and alarm_time[1] < 60 and alarm_time[1] >= 0:
+			return True
+	elif len(alarm_time) == 3: #HH:MM:SS
+		if alarm_time[0] < 24 and alarm_time[0] >= 0 \
+                   and alarm_time[1] < 60 and alarm_time[1] >= 0 \
+                   and alarm_time[2] < 60 and alarm_time[2] >= 0:
+			return True
+	return False
+while True:
+	alarm_input =a
+	try:
+		alarm_time = [int(n) for n in alarm_input.split(":")]
+		if check_alarm_time(alarm_time):
+			break
+		else:
+			raise ValueError
+	except ValueError:
+		print("ERROR: Enter time in HH or HH:MM or HH:MM:SS format")
+
+seconds_hms = [3600, 60, 1] # Number of seconds in an Hour, Minute, and Second
+alarm_seconds = sum([a*b for a,b in zip(seconds_hms[:len(alarm_time)], alarm_time)])
+now = datetime.datetime.now()
+current_time_seconds = sum([a*b for a,b in zip(seconds_hms, [now.hour, now.minute, now.second])])
+time_diff_seconds = alarm_seconds - current_time_seconds
+
+if time_diff_seconds < 0:
+	time_diff_seconds += 86400 # number of seconds in a day
+print("Alarm set to go off in %s" % datetime.timedelta(seconds=time_diff_seconds))
+time.sleep(time_diff_seconds)
+print("You need to Wake Up!")
+print("please Wake Up!")
+print("Now the TIME is",alarm_input,b)
